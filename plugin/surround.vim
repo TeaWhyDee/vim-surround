@@ -283,7 +283,13 @@ function! s:wrap(string,char,type,removed,special)
       let keeper = strcharpart(keeper,0,strchars(keeper) - 1)
     endif
   endif
-  let before = repeat(before, multi)
+  if before =~ '.*\n\t$'
+    let before = substitute(before, '\n\t', '', '')
+    let before = repeat(before, multi)
+    let before = before."\n\t"
+  else
+    let before = repeat(before, multi)
+  endif
   let after = repeat(after, multi)
   if type ==# 'V'
     let before = initspaces.before

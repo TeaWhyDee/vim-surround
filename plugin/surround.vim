@@ -290,7 +290,7 @@ function! s:wrap(string,char,type,removed,special)
   else
     let before = repeat(before, scount)
   endif
-  let after = repeat(after, multi)
+  let after = repeat(after, scount)
   if type ==# 'V'
     let before = initspaces.before
   endif

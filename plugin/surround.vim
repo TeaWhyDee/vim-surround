@@ -142,10 +142,10 @@ function! s:wrap(string,char,type,removed,special)
   endif
   let pairs = "b()B{}r[]a<>"
   let extraspace = ""
-  let multi = 1
-  if newchar =~ '^\d\+'
-    let multi = matchstr(newchar, '^\d\+')
-    let newchar = substitute(newchar,'^\d\+','','')
+  let scount = 1
+  if newchar =~ '^[0-9]'
+    let scount = strpart(newchar,0,1)
+    let newchar = strpart(newchar,1)
   endif
   if newchar =~ '^ '
     let newchar = strpart(newchar,1)
@@ -285,10 +285,10 @@ function! s:wrap(string,char,type,removed,special)
   endif
   if before =~ '.*\n\t$'
     let before = substitute(before, '\n\t', '', '')
-    let before = repeat(before, multi)
+    let before = repeat(before, scount)
     let before = before."\n\t"
   else
-    let before = repeat(before, multi)
+    let before = repeat(before, scount)
   endif
   let after = repeat(after, multi)
   if type ==# 'V'

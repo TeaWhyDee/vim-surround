@@ -1,3 +1,9 @@
+This fork includes multiplier support and other minor fixes.
+```
+Old text                  Command           New text ~
+ hello                     ysW2*             **hello**
+```
+
 # surround.vim
 
 Surround.vim is all about "surroundings": parentheses, brackets, quotes,
